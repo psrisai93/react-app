@@ -1,18 +1,30 @@
-import { MouseEvent } from "react";
+import { MouseEvent, useState } from "react";
+interface Props {
+  items: string[];
+  heading: string;
+}
 
-function ListGroup() {
-  let items = ["New York", "San Francisco", "Tokyo", "London", "Paris"];
-
-  //event handler
-  const handleClick = (event: MouseEvent) => console.log(event);
-
+function ListGroup({ items, heading }: Props) {
+  //Hook - state hook
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   return (
     <>
-      <h1>List</h1>
+      <h1>{heading}</h1>
       {items.length === 0 && <p>Nothing</p>}
       <ul className="list-group">
         {items.map((item, index) => (
-          <li className="list-group-item" key={item} onClick={handleClick}>
+          <li
+            //dynamic class assignement(This is basic. There are advanced assignment of dynamic classses)
+            className={
+              selectedIndex == index
+                ? "list-group-item active"
+                : "list-group-item"
+            }
+            key={item}
+            onClick={() => {
+              setSelectedIndex(index);
+            }}
+          >
             {item}
           </li>
         ))}
