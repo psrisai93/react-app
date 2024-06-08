@@ -1,11 +1,9 @@
-import Alert from "./components/Alert";
-import ListGroup from "./components/ListGroup";
+import ButtonComponent from "./components/ButtonComponent";
+const label = "MyButton1";
 function App() {
   return (
     <div>
-      <Alert>
-        Hello <span>World</span>
-      </Alert>
+      <ButtonComponent>{label}</ButtonComponent>
     </div>
   );
 }
