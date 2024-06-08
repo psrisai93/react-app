@@ -1,9 +1,21 @@
-import { ReactNode } from "react";
-
 interface Props {
-  children: ReactNode;
+  setVisible: () => void;
 }
-const Alert = ({ children }: Props) => {
-  return <div>{children}</div>;
+const Alert = ({ setVisible }: Props) => {
+  return (
+    <div
+      className="alert alert-warning alert-dismissible fade show"
+      role="alert"
+    >
+      Alert
+      <button
+        type="button"
+        className="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+        onClick={setVisible}
+      ></button>
+    </div>
+  );
 };
 export default Alert;
